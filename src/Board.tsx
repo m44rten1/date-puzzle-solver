@@ -1,11 +1,11 @@
-import Tile from "./Tile"
+import Tile from "./Tile";
 
 export default () => {
   return (
     <div>
-      <Tile name="1"></Tile>
-      <Tile name="2"></Tile>
-      <Tile name="3"></Tile>
+      <Tile label="1"></Tile>
+      <Tile label="2"></Tile>
+      <Tile label="3"></Tile>
     </div>
-  )
-}
+  );
+};
