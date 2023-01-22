@@ -1,5 +1,6 @@
 import Tile from "./Tile";
 import { BOARD } from "./Puzzle";
+import "./Board.css";
 
 const rowCount = Math.max(...BOARD.map((field) => field.position.x)) + 1;
 const columnCount = Math.max(...BOARD.map((field) => field.position.y)) + 1;
@@ -16,7 +17,7 @@ for (let i = 0; i < rowCount; i++) {
 
 export default () => {
   return (
-    <div>
+    <div className="Board">
       {tiles.map((row) => (
         <div>
           {row.map((label) => (
