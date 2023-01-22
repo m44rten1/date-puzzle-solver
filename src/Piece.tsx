@@ -5,7 +5,7 @@ export interface Square {
 
 export interface Piece {
   squares: Square[];
-  symmetries: { rotations: number; mirror: boolean }[];
+  symmetries: { rotations: number; mirrorable: boolean };
 }
 
 export interface FixedPiece {
@@ -22,7 +22,7 @@ export const PIECES: Piece[] = [
       { x: 3, y: 0 },
       { x: 0, y: 1 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -32,7 +32,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 1, y: 2 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -42,7 +42,7 @@ export const PIECES: Piece[] = [
       { x: 0, y: 2 },
       { x: 0, y: 3 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -52,7 +52,7 @@ export const PIECES: Piece[] = [
       { x: 2, y: 1 },
       { x: 2, y: 2 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: false },
   },
   {
     squares: [
@@ -62,7 +62,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 2 },
       { x: 1, y: 3 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -72,7 +72,7 @@ export const PIECES: Piece[] = [
       { x: 0, y: 1 },
       { x: 0, y: 2 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: false },
   },
   {
     squares: [
@@ -82,7 +82,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: [{ rotations: 4, mirror: false }],
+    symmetries: { rotations: 4, mirrorable: false },
   },
   {
     squares: [
@@ -93,9 +93,64 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: [{ rotations: 2, mirror: false }],
+    symmetries: { rotations: 2, mirrorable: false },
   },
 ];
+
+const getPieceSymmetry = (
+  piece: Piece,
+  symmetry: { rotation: number; mirror: boolean }
+): FixedPiece => {
+  if (
+    symmetry.rotation >= piece.symmetries.rotations ||
+    (symmetry.mirror && !piece.symmetries.mirrorable)
+  )
+    throw new Error("Symmetry not available");
+
+  const result = {
+    squares: piece.squares.map((square) => ({ ...square })),
+    position: { x: 0, y: 0 },
+  };
+
+  if (symmetry.mirror) {
+    result.squares = result.squares.map((square) => ({
+      ...square,
+      x: -square.x,
+    }));
+  }
+
+  if (symmetry.rotation === 1) {
+    result.squares = result.squares.map((square) => ({
+      x: square.y,
+      y: -square.x,
+    }));
+  }
+
+  if (symmetry.rotation === 2) {
+    result.squares = result.squares.map((square) => ({
+      x: -square.x,
+      y: -square.y,
+    }));
+  }
+
+  if (symmetry.rotation === 3) {
+    result.squares = result.squares.map((square) => ({
+      x: -square.y,
+      y: square.x,
+    }));
+  }
+
+  // Ground
+  const xMin = Math.min(...result.squares.map((square) => square.x));
+  const yMin = Math.min(...result.squares.map((square) => square.y));
+
+  result.squares = result.squares.map((square) => ({
+    x: square.x - xMin,
+    y: square.y - yMin,
+  }));
+
+  return result;
+};
 
 export const squaresToSvg = (fixedPiece: FixedPiece) => {
   const verticalRectangles = fixedPiece.squares.reduce((acc, current) => {
