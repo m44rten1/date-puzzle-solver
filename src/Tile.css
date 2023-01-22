@@ -1,24 +1,18 @@
-.Tile {
-  width: 50px;
-  line-height: 50px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  margin: 3px;
-  text-align: center;
-  padding: 0.6em 1.2em;
+.tile-wrapper {
   display: inline-block;
+  width: 55px;
+  height: 55px;
 }
 
-.EmptyTile {
-  width: 50px;
-  line-height: 50px;
-  font-family: inherit;
-  margin: 3px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+.Tile {
+  font-size: 1em;
+  font-weight: 500;
   display: inline-block;
+  background-color: #1a1a1a;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }

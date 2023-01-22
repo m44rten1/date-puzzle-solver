@@ -5,9 +5,11 @@ interface Tile {
 }
 
 export default ({ label }: Tile) => {
-  return label ? (
-    <div className="Tile">{label}</div>
-  ) : (
-    <div className="EmptyTile"></div>
+  return (
+    <div className="tile-wrapper">
+      <div className="Tile" style={{ opacity: label ? 100 : 0 }}>
+        {label || "_"}
+      </div>
+    </div>
   );
 };
