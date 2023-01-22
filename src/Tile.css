@@ -16,3 +16,8 @@
   align-items: center;
   border-radius: 8px;
 }
+
+.piece {
+  position: absolute;
+  opacity: 50%;
+}
