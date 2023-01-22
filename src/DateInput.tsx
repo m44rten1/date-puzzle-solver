@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./DateInput.css";
 
 interface DateInput {
@@ -24,6 +24,10 @@ export default ({ notifyDateChange }: DateInput) => {
   const [month, setMonth] = useState("JAN");
   const [day, setDay] = useState("1");
 
+  useEffect(() => {
+    notifyDateChange(day, month);
+  }, []);
+
   const dayChanged = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     setDay(event.target.value);
@@ -41,14 +45,18 @@ export default ({ notifyDateChange }: DateInput) => {
       <div>
         <select name="days" id="days" onChange={dayChanged}>
           {[...Array(31)].map((_, i) => (
-            <option value={i + 1}>{i + 1}</option>
+            <option key={i} value={i + 1}>
+              {i + 1}
+            </option>
           ))}
         </select>
       </div>
       <div>
         <select name="months" id="months" onChange={monthChanged}>
           {months.map((month) => (
-            <option value={month}>{month}</option>
+            <option key={month} value={month}>
+              {month}
+            </option>
           ))}
         </select>
       </div>
