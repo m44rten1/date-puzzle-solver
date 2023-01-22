@@ -1,5 +1,6 @@
 import "./App.css";
 import Board from "./Board";
+import DateInput from "./DateInput";
 import { FixedPiece, PIECES } from "./Piece";
 
 const positions = [
@@ -17,9 +18,14 @@ const examplePieces: FixedPiece[] = PIECES.map((piece, i) => {
   return { squares: piece.squares, position: positions[i] };
 });
 
+const notifyDateChange = (day: string, month: string) => {
+  console.log(day, month);
+};
+
 export default () => {
   return (
     <div className="App">
+      <DateInput notifyDateChange={notifyDateChange} />
       <Board fixedPieces={examplePieces} />
     </div>
   );
