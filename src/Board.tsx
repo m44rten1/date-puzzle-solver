@@ -1,11 +1,22 @@
 import Tile from "./Tile";
 
+const months = [
+  ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"],
+  ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+];
+
 export default () => {
   return (
     <div>
-      <Tile label="1"></Tile>
-      <Tile label="2"></Tile>
-      <Tile label="3"></Tile>
+      {months.map((row) => {
+        return (
+          <div>
+            {row.map((month) => {
+              return <Tile label={month} />;
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 };

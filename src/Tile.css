@@ -1,0 +1,14 @@
+.Tile {
+  min-width: 50px;
+  line-height: 50px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  margin: 3px;
+  text-align: center;
+  padding: 0.6em 1.2em;
+  display: inline-block;
+}
