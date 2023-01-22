@@ -172,8 +172,6 @@ export const squaresToSvg = (fixedPiece: FixedPiece) => {
     return acc;
   }, [] as Square[]);
 
-  console.log({ verticalRectangles, horizontalRectangles });
-
   const maxX = Math.max(...fixedPiece.squares.map((square) => square.x));
   const maxY = Math.max(...fixedPiece.squares.map((square) => square.y));
 
