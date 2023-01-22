@@ -1,5 +1,5 @@
 .Tile {
-  min-width: 50px;
+  width: 50px;
   line-height: 50px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -9,6 +9,16 @@
   background-color: #1a1a1a;
   margin: 3px;
   text-align: center;
+  padding: 0.6em 1.2em;
+  display: inline-block;
+}
+
+.EmptyTile {
+  width: 50px;
+  line-height: 50px;
+  font-family: inherit;
+  margin: 3px;
+  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   display: inline-block;
 }

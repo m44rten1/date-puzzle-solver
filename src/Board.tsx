@@ -1,15 +1,29 @@
 import Tile from "./Tile";
-import { fields } from "./Puzzle";
+import { BOARD } from "./Puzzle";
 
-const rowCount = Math.max(...fields.map((field) => field.position.x)) + 1;
-const columnCount = Math.max(...fields.map((field) => field.position.y)) + 1;
+const rowCount = Math.max(...BOARD.map((field) => field.position.x)) + 1;
+const columnCount = Math.max(...BOARD.map((field) => field.position.y)) + 1;
 
-console.log({ rowCount, columnCount });
+const tiles: (string | null)[][] = [];
+
+for (let i = 0; i < rowCount; i++) {
+  tiles.push([]);
+  for (let j = 0; j < columnCount; j++) {
+    const piece = BOARD.find(({ position: { x, y } }) => x === i && y === j);
+    tiles[i].push(piece?.label || null);
+  }
+}
 
 export default () => {
   return (
     <div>
-      <Tile label={"test"} />
+      {tiles.map((row) => (
+        <div>
+          {row.map((label) => (
+            <Tile label={label} />
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

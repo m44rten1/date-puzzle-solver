@@ -1,9 +1,13 @@
 import "./Tile.css";
 
 interface Tile {
-  label: string;
+  label: string | null;
 }
 
 export default ({ label }: Tile) => {
-  return <div className="Tile">{label}</div>;
+  return label ? (
+    <div className="Tile">{label}</div>
+  ) : (
+    <div className="EmptyTile"></div>
+  );
 };
