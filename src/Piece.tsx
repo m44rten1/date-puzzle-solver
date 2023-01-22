@@ -5,7 +5,7 @@ export interface Square {
 
 export interface Piece {
   squares: Square[];
-  symmetries: { rotation: number; mirror: boolean }[];
+  symmetries: { rotations: number; mirror: boolean }[];
 }
 
 export interface FixedPiece {
@@ -18,9 +18,82 @@ export const PIECES: Piece[] = [
     squares: [
       { x: 0, y: 0 },
       { x: 1, y: 0 },
-      { x: 1, y: 1 },
+      { x: 2, y: 0 },
+      { x: 3, y: 0 },
+      { x: 0, y: 1 },
     ],
-    symmetries: [{ rotation: 0, mirror: false }],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 0, y: 0 },
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 1, y: 2 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 0, y: 2 },
+      { x: 0, y: 3 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 0, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 2, y: 1 },
+      { x: 2, y: 2 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 1, y: 2 },
+      { x: 1, y: 3 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 0, y: 0 },
+      { x: 1, y: 0 },
+      { x: 2, y: 0 },
+      { x: 0, y: 1 },
+      { x: 0, y: 2 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 0, y: 0 },
+      { x: 2, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 2, y: 1 },
+    ],
+    symmetries: [{ rotations: 4, mirror: false }],
+  },
+  {
+    squares: [
+      { x: 0, y: 0 },
+      { x: 1, y: 0 },
+      { x: 2, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 2, y: 1 },
+    ],
+    symmetries: [{ rotations: 2, mirror: false }],
   },
 ];
 
