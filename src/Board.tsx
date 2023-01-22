@@ -54,9 +54,10 @@ export default ({ fixedPieces }: Board) => {
   return (
     <div className="Board">
       {tiles.map((row, i) => (
-        <div>
+        <div key={i}>
           {row.map((label, j) => (
             <Tile
+              key={`${i},${j}`}
               label={label}
               piece={fixedPieces.find(
                 ({ position: { x, y } }) => x === j && y === i
