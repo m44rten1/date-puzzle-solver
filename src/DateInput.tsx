@@ -1,27 +1,12 @@
 import { useEffect, useState } from "react";
 import "./DateInput.css";
-
+import { MONTHS } from "./Board";
 interface DateInput {
   notifyDateChange: (day: string, month: string) => void;
 }
 
-const months = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-];
-
 export default ({ notifyDateChange }: DateInput) => {
-  const [month, setMonth] = useState("JAN");
+  const [month, setMonth] = useState(MONTHS[0]);
   const [day, setDay] = useState("1");
 
   useEffect(() => {
@@ -53,7 +38,7 @@ export default ({ notifyDateChange }: DateInput) => {
       </div>
       <div>
         <select name="months" id="months" onChange={monthChanged}>
-          {months.map((month) => (
+          {MONTHS.map((month) => (
             <option key={month} value={month}>
               {month}
             </option>
