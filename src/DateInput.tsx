@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./DateInput.css";
 import { MONTHS } from "./Board";
 interface DateInput {
@@ -8,10 +8,6 @@ interface DateInput {
 export default ({ notifyDateChange }: DateInput) => {
   const [month, setMonth] = useState(MONTHS[0]);
   const [day, setDay] = useState("1");
-
-  useEffect(() => {
-    notifyDateChange(day, month);
-  }, []);
 
   const dayChanged = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();

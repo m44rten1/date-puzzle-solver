@@ -4,3 +4,17 @@
   text-align: center;
   min-width: 300px;
 }
+
+/* The animation code */
+/* @keyframes loader {
+  from {
+    letter-spacing: 1px;
+  }
+  to {
+    letter-spacing: 100px;
+  }
+}
+.loading {
+  animation-name: loader;
+  animation-duration: 10s;
+} */

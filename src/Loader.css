@@ -1,0 +1,22 @@
+.Loader {
+  animation-name: change-color;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+
+  font-family: Avenir;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+}
+
+@keyframes change-color {
+  25% {
+    color: #00a4bd;
+  }
+  50% {
+    color: #ff7a59;
+  }
+  75% {
+    color: #00bda5;
+  }
+}
