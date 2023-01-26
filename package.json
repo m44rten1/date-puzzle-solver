@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "yarn build && git add dist -A && git commit -m '🚀 Deploy' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "react": "^18.2.0",
