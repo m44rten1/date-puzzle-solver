@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./Board";
 import DateInput from "./DateInput";
@@ -16,14 +16,20 @@ export default () => {
       const solutions = solver(day, month);
       setFixedPieces(solutions || []);
       setLoading(false);
-    }, 1000);
+    }, 10);
   };
+
+  useEffect(() => {
+    notifyDateChange("1", "JAN");
+  }, []);
 
   return (
     <div className="App">
       <Board fixedPieces={fixedPieces} />
-      <p className="animated">Loading!</p>
-      {loading ? <Loader /> : <DateInput notifyDateChange={notifyDateChange} />}
+      {loading && <Loader />}
+      <div style={{ visibility: loading ? "hidden" : "visible" }}>
+        <DateInput notifyDateChange={notifyDateChange} />
+      </div>
     </div>
   );
 };
