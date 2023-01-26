@@ -16,7 +16,7 @@ export default () => {
       const solutions = solver(day, month);
       setFixedPieces(solutions || []);
       setLoading(false);
-    }, 10);
+    }, 200);
   };
 
   useEffect(() => {
