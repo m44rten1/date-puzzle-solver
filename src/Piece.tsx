@@ -72,7 +72,7 @@ export const PIECES: Piece[] = [
       { x: 0, y: 1 },
       { x: 0, y: 2 },
     ],
-    symmetries: { rotations: 4, mirrorable: true },
+    symmetries: { rotations: 4, mirrorable: false },
   },
   {
     squares: [
@@ -82,7 +82,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: { rotations: 4, mirrorable: true },
+    symmetries: { rotations: 4, mirrorable: false },
   },
   {
     squares: [
@@ -93,7 +93,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: { rotations: 4, mirrorable: true },
+    symmetries: { rotations: 2, mirrorable: false },
   },
 ];
 
