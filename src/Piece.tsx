@@ -72,7 +72,7 @@ export const PIECES: Piece[] = [
       { x: 0, y: 1 },
       { x: 0, y: 2 },
     ],
-    symmetries: { rotations: 4, mirrorable: false },
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -82,7 +82,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: { rotations: 4, mirrorable: false },
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -93,7 +93,7 @@ export const PIECES: Piece[] = [
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ],
-    symmetries: { rotations: 2, mirrorable: false },
+    symmetries: { rotations: 4, mirrorable: true },
   },
 ];
 
@@ -152,7 +152,12 @@ export const getPieceSymmetry = (
   return result;
 };
 
-export const squaresToSvg = (fixedPiece: FixedPiece) => {
+export const squaresToSvg = (
+  fixedPiece: FixedPiece,
+  side: number = 50,
+  margin: number = 5,
+  radius: number = 8
+) => {
   const verticalRectangles = fixedPiece.squares.reduce((acc, current) => {
     const vertical = fixedPiece.squares.find(
       ({ x, y }) => x === current.x && y === current.y + 1
@@ -178,16 +183,30 @@ export const squaresToSvg = (fixedPiece: FixedPiece) => {
   const minX = Math.min(...fixedPiece.squares.map((square) => square.x));
   const minY = Math.min(...fixedPiece.squares.map((square) => square.y));
 
-  const width = 55 * (maxX - minX + 1) - 5;
-  const height = 55 * (maxY - minY + 1) - 5;
+  const d = side + margin;
+
+  const width = d * (maxX - minX + 1) - margin;
+  const height = d * (maxY - minY + 1) - margin;
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
       {horizontalRectangles.map((rect) => (
-        <rect x={55 * rect.x} y={55 * rect.y} width="105" height="50" rx="8" />
+        <rect
+          x={d * rect.x}
+          y={d * rect.y}
+          width={2 * side + margin}
+          height={side}
+          rx={radius}
+        />
       ))}
       {verticalRectangles.map((rect) => (
-        <rect x={55 * rect.x} y={55 * rect.y} width="50" height="105" rx="8" />
+        <rect
+          x={d * rect.x}
+          y={d * rect.y}
+          width={side}
+          height={2 * side + margin}
+          rx={radius}
+        />
       ))}
     </svg>
   );
