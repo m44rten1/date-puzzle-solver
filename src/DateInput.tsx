@@ -12,13 +12,11 @@ export default ({ notifyDateChange }: DateInput) => {
   const dayChanged = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     setDay(event.target.value);
-    notifyDateChange(event.target.value, month);
   };
 
   const monthChanged = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     setMonth(event.target.value);
-    notifyDateChange(day, event.target.value);
   };
 
   return (
@@ -40,6 +38,9 @@ export default ({ notifyDateChange }: DateInput) => {
             </option>
           ))}
         </select>
+      </div>
+      <div>
+        <button onClick={() => notifyDateChange(day, month)}>Solve!</button>
       </div>
     </div>
   );

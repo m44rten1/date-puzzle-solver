@@ -6,3 +6,8 @@ select {
   width: 30%;
   font-size: 1em;
 }
+
+button {
+  margin-top: 10px;
+  width: 30%;
+}
