@@ -49,20 +49,20 @@ interface Board {
 const rowCount = Math.max(...BOARD.map((field) => field.position.x)) + 1;
 const columnCount = Math.max(...BOARD.map((field) => field.position.y)) + 1;
 
-const tiles: (string | undefined)[][] = [];
+export const TILES: (string | undefined)[][] = [];
 
 for (let i = 0; i < rowCount; i++) {
-  tiles.push([]);
+  TILES.push([]);
   for (let j = 0; j < columnCount; j++) {
     const piece = BOARD.find(({ position: { x, y } }) => x === i && y === j);
-    tiles[i].push(piece?.label);
+    TILES[i].push(piece?.label);
   }
 }
 
 export default ({ fixedPieces }: Board) => {
   return (
     <div className="Board">
-      {tiles.map((row, i) => (
+      {TILES.map((row, i) => (
         <div key={i}>
           {row.map((label, j) => (
             <Tile

@@ -52,7 +52,7 @@ export const PIECES: Piece[] = [
       { x: 2, y: 1 },
       { x: 2, y: 2 },
     ],
-    symmetries: { rotations: 4, mirrorable: false },
+    symmetries: { rotations: 4, mirrorable: true },
   },
   {
     squares: [
@@ -97,7 +97,7 @@ export const PIECES: Piece[] = [
   },
 ];
 
-const getPieceSymmetry = (
+export const getPieceSymmetry = (
   piece: Piece,
   symmetry: { rotation: number; mirror: boolean }
 ): FixedPiece => {
