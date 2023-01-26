@@ -21,3 +21,9 @@
   position: absolute;
   opacity: 50%;
 }
+
+@media (prefers-color-scheme: light) {
+  .Tile {
+    background-color: #c7c2c2;
+  }
+}
