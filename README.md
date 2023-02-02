@@ -1,6 +1,7 @@
 # Date puzzle solver
 
 This is a frontend app that solves the `A Puzzle A Day` puzzle. The results are calculated live in the browser.
+
 ![A puzzle a day](/a-puzzle-a-day.jpg)
 
 ## Demo
